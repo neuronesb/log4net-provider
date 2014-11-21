@@ -29,3 +29,29 @@ Note that this pluggable model is only for use with customer solutions
 that are linking against the Neuron ESB SDK. The Neuron ESB
 applications such as the ESB Windows service will continue to use
 log4net for our logging output.
+
+Software Requirements
+---------------------
+To build the log4net provider assembly, you will need:
+
+* [Visual Studio 2013](http://www.visualstudio.com)
+
+Building the Software
+---------------------
+From the command line, you can use MSBuild to build the project:
+
+    > msbuild.exe log4net-provider.sln
+
+You can also use Visual Studio to build the project. Open the
+**log4net-provider.sln** solution and build from within the Visual
+Studio IDE.
+
+Using the log4net Provider
+--------------------------
+In order to use the log4net provider in custom Neuron ESB applications,
+you need to register the provider at runtime. The logging provider must
+be registered with the **Neuron.Esb.Logging.LogManager** class:
+
+```csharp
+Neuron.Esb.Logging.LogManager.SetLogprovider(new Log4netProvider());
+```
